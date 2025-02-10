@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "feature_highlight": {
+              "type": "SharedSlice"
+            },
             "product_grid": {
               "type": "SharedSlice"
             },

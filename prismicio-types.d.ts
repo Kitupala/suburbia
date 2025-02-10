@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = ProductGridSlice | HeroSlice;
+type HomepageDocumentDataSlicesSlice =
+  | FeatureHighlightSlice
+  | ProductGridSlice
+  | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -226,6 +229,181 @@ export type AllDocumentTypes =
   | SkateboardDocument;
 
 /**
+ * Primary content in *FeatureHighlight → Default → Primary*
+ */
+export interface FeatureHighlightSliceDefaultPrimary {
+  /**
+   * Theme field in *FeatureHighlight → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.default.primary.theme
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  theme: prismic.SelectField<"Blue" | "Orange" | "Navy" | "Lime">;
+
+  /**
+   * Heading field in *FeatureHighlight → Default → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Body field in *FeatureHighlight → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *FeatureHighlight → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.default.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Backgroung Image field in *FeatureHighlight → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.default.primary.backgroung_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  backgroung_image: prismic.ImageField<never>;
+
+  /**
+   * Foreground Image field in *FeatureHighlight → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.default.primary.foreground_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  foreground_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for FeatureHighlight Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeatureHighlightSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeatureHighlightSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *FeatureHighlight → Image on Left → Primary*
+ */
+export interface FeatureHighlightSliceImageOnLeftPrimary {
+  /**
+   * Theme field in *FeatureHighlight → Image on Left → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.imageOnLeft.primary.theme
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  theme: prismic.SelectField<"Blue" | "Orange" | "Navy" | "Lime">;
+
+  /**
+   * Heading field in *FeatureHighlight → Image on Left → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.imageOnLeft.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.TitleField;
+
+  /**
+   * Body field in *FeatureHighlight → Image on Left → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.imageOnLeft.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Button field in *FeatureHighlight → Image on Left → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.imageOnLeft.primary.button
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Backgroung Image field in *FeatureHighlight → Image on Left → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.imageOnLeft.primary.backgroung_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  backgroung_image: prismic.ImageField<never>;
+
+  /**
+   * Foreground Image field in *FeatureHighlight → Image on Left → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlight.imageOnLeft.primary.foreground_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  foreground_image: prismic.ImageField<never>;
+}
+
+/**
+ * Image on Left variation for FeatureHighlight Slice
+ *
+ * - **API ID**: `imageOnLeft`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeatureHighlightSliceImageOnLeft = prismic.SharedSliceVariation<
+  "imageOnLeft",
+  Simplify<FeatureHighlightSliceImageOnLeftPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FeatureHighlight*
+ */
+type FeatureHighlightSliceVariation =
+  | FeatureHighlightSliceDefault
+  | FeatureHighlightSliceImageOnLeft;
+
+/**
+ * FeatureHighlight Shared Slice
+ *
+ * - **API ID**: `feature_highlight`
+ * - **Description**: FeatureHighlight
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeatureHighlightSlice = prismic.SharedSlice<
+  "feature_highlight",
+  FeatureHighlightSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -399,6 +577,12 @@ declare module "@prismicio/client" {
       SkateboardDocument,
       SkateboardDocumentData,
       AllDocumentTypes,
+      FeatureHighlightSlice,
+      FeatureHighlightSliceDefaultPrimary,
+      FeatureHighlightSliceImageOnLeftPrimary,
+      FeatureHighlightSliceVariation,
+      FeatureHighlightSliceDefault,
+      FeatureHighlightSliceImageOnLeft,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
