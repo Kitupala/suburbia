@@ -6,5 +6,6 @@ export const components = {
   feature_highlight: dynamic(() => import("./FeatureHighlight")),
   hero: dynamic(() => import("./Hero")),
   product_grid: dynamic(() => import("./ProductGrid")),
+  team_grid: dynamic(() => import("./TeamGrid")),
   video_block: dynamic(() => import("./VideoBlock")),
 };
