@@ -11,6 +11,7 @@ import { Heading } from "@/components/Heading";
 import { ButtonLink } from "@/components/ButtonLink";
 import { TallLogo } from "@/slices/Hero/TallLogo";
 import { WideLogo } from "@/slices/Hero/WideLogo";
+import { InteractiveSkateboard } from "@/slices/Hero/InteractiveSkateboard";
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
@@ -47,7 +48,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
         </div>
       </div>
 
-      {/*  Skateboard abs pos */}
+      <InteractiveSkateboard />
     </Bounded>
   );
 };
