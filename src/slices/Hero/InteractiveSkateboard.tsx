@@ -5,9 +5,19 @@ import { Suspense } from "react";
 import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
 import { Skateboard } from "@/components/Skateboard";
 
-type Props = {};
+type Props = {
+  deckTextureURL: string;
+  wheelTextureURL: string;
+  truckColor: string;
+  boltColor: string;
+};
 
-export const InteractiveSkateboard = (props: Props) => {
+export const InteractiveSkateboard = ({
+  deckTextureURL,
+  wheelTextureURL,
+  truckColor,
+  boltColor,
+}: Props) => {
   return (
     <div className="absolute inset-0 z-10 flex items-center justify-center">
       <Canvas
@@ -15,20 +25,38 @@ export const InteractiveSkateboard = (props: Props) => {
         camera={{ position: [1.5, 1, 1.4], fov: 55 }}
       >
         <Suspense>
-          <Scene />
+          <Scene
+            deckTextureURL={deckTextureURL}
+            wheelTextureURL={wheelTextureURL}
+            truckColor={truckColor}
+            boltColor={boltColor}
+          />
         </Suspense>
       </Canvas>
     </div>
   );
 };
 
-const Scene = () => {
+const Scene = ({
+  deckTextureURL,
+  wheelTextureURL,
+  truckColor,
+  boltColor,
+}: Props) => {
   return (
     <group>
       <OrbitControls />
       <Environment files="/hdr/warehouse-256.hdr" />
 
-      <Skateboard />
+      <Skateboard
+        wheelTextureURLs={[wheelTextureURL]}
+        wheelTextureURL={wheelTextureURL}
+        deckTextureURLs={[deckTextureURL]}
+        deckTextureURL={deckTextureURL}
+        truckColor={truckColor}
+        boltColor={boltColor}
+        constantWheelSpin
+      />
       <ContactShadows opacity={0.6} position={[0, -0.08, 0]} />
     </group>
   );
