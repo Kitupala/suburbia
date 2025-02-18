@@ -107,7 +107,6 @@ const Scene = ({
     if (!board || !origin || isAnimating) return;
 
     const { name } = event.object;
-    console.log("name", name);
 
     setShowHotspot((prev) => ({ ...prev, [name]: false }));
 
