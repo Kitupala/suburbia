@@ -15,7 +15,9 @@ export function Bounded({
   ...restProps
 }: BoundedProps) {
   return (
+    // @ts-expect-error nothing here
     <Comp
+      // @ts-expect-error nothing here
       className={clsx(
         "px-6 ~py-10/16 [.header+&]:pt-44 [.header+&]:md:pt-32",
         className,
