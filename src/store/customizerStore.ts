@@ -14,10 +14,10 @@ type CustomizerState = {
 };
 
 export interface InitialCustomizerState {
-  defaultWheel?: Content.BoardCustomizerDocumentDataWheelsItem;
-  defaultDeck?: Content.BoardCustomizerDocumentDataDecksItem;
-  defaultTruck?: Content.BoardCustomizerDocumentDataMetalsItem;
-  defaultBolt?: Content.BoardCustomizerDocumentDataMetalsItem;
+  defaultWheel: Content.BoardCustomizerDocumentDataWheelsItem;
+  defaultDeck: Content.BoardCustomizerDocumentDataDecksItem;
+  defaultTruck: Content.BoardCustomizerDocumentDataMetalsItem;
+  defaultBolt: Content.BoardCustomizerDocumentDataMetalsItem;
 }
 
 export const useCustomizerStore = create<CustomizerState>()((set) => ({

@@ -22,10 +22,10 @@ const ENVIRONMENT_COLOR = "#3B3A3A";
 
 interface PreviewProps {
   defaults: {
-    defaultWheel: Content.BoardCustomizerDocumentDataWheelsItem | undefined;
-    defaultDeck: Content.BoardCustomizerDocumentDataDecksItem | undefined;
-    defaultTruck: Content.BoardCustomizerDocumentDataMetalsItem | undefined;
-    defaultBolt: Content.BoardCustomizerDocumentDataMetalsItem | undefined;
+    defaultWheel: Content.BoardCustomizerDocumentDataWheelsItem;
+    defaultDeck: Content.BoardCustomizerDocumentDataDecksItem;
+    defaultTruck: Content.BoardCustomizerDocumentDataMetalsItem;
+    defaultBolt: Content.BoardCustomizerDocumentDataMetalsItem;
   };
   wheelTextureURLs: string[];
   deckTextureURLs: string[];

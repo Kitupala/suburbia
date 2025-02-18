@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Preview } from "@/app/build/Preview";
 import { asImageSrc } from "@prismicio/client";
 import { Controls } from "@/app/build/Controls";
+import Loading from "@/app/build/Loading";
 
 type SearchParams = {
   wheel?: string;
@@ -25,13 +26,13 @@ export default async function Page(props: {
 
   const defaults = {
     defaultWheel:
-      wheels.find((wheel) => wheel.uid === searchParams.wheel) ?? wheels[0],
+      wheels.find((wheel) => wheel.uid === searchParams.wheel) ?? wheels[0]!,
     defaultDeck:
-      decks.find((deck) => deck.uid === searchParams.deck) ?? decks[0],
+      decks.find((deck) => deck.uid === searchParams.deck) ?? decks[0]!,
     defaultTruck:
-      metals.find((metal) => metal.uid === searchParams.truck) ?? metals[0],
+      metals.find((metal) => metal.uid === searchParams.truck) ?? metals[0]!,
     defaultBolt:
-      metals.find((metal) => metal.uid === searchParams.bolt) ?? metals[0],
+      metals.find((metal) => metal.uid === searchParams.bolt) ?? metals[0]!,
   };
 
   const wheelTextureURLs = wheels
@@ -71,6 +72,7 @@ export default async function Page(props: {
           Add to cart
         </ButtonLink>
       </div>
+      <Loading />
     </div>
   );
 }
